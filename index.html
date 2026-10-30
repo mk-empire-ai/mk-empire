@@ -3,51 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK EMPIRE - BOSS</title>
+<title>MK EMPIRE - CLASSIC</title>
 <style>
-body{margin:0;padding:10px;background:#000;color:gold;font-family:Arial}
+body{margin:0;padding:0;background:#000 url('bg.jpg') fixed;background-size:cover;color:gold;font-family:'Times New Roman',serif;min-height:100vh}
+.overlay{background:rgba(0,0,0,0.85);min-height:100vh;padding:15px}
 .container{max-width:500px;margin:0 auto}
-.header{background:#111;border:3px solid gold;border-radius:20px;padding:20px;text-align:center;box-shadow:0 0 30px gold}
-.logo{width:140px;height:140px;margin:0 auto;background:linear-gradient(135deg,gold,#ffaa00);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:65px;font-weight:900;border:4px solid #fff}
-.mtn{background:gold;color:#000;padding:12px;border-radius:12px;font-weight:900;margin:10px 0;text-align:center}
-.card{background:#1a1a1a;border:2px solid gold;border-radius:15px;padding:15px;margin:12px 0}
-input{width:100%;padding:12px;border-radius:10px;border:2px solid #333;background:#000;color:gold;margin:6px 0}
-button{width:100%;padding:12px;border-radius:10px;border:none;background:gold;color:#000;font-weight:900;margin:6px 0}
-.codebox{background:gold;color:#000;padding:10px;border-radius:8px;font-weight:900;text-align:center;font-size:20px;margin:8px 0}
-.dealer{background:#000;border:1px solid gold;border-radius:8px;padding:8px;margin:6px 0}
+.header{background:rgba(0,0,0,0.9);border:3px solid gold;border-radius:0;padding:30px;text-align:center;box-shadow:0 0 40px rgba(255,215,0,0.3)}
+.title{font-size:38px;font-weight:900;letter-spacing:8px;color:gold;text-shadow:0 0 20px gold;border-bottom:2px solid gold;padding-bottom:15px;display:inline-block}
+.subtitle{color:#aaa;font-size:12px;letter-spacing:5px;margin-top:10px}
+.mtn{background:linear-gradient(90deg,gold,#ffcc00);color:#000;padding:15px;font-weight:900;margin:20px 0;letter-spacing:2px;border:1px solid #fff}
+.card{background:rgba(10,10,10,0.95);border:1px solid gold;padding:20px;margin:15px 0}
+input{width:100%;padding:14px;background:#000;color:gold;border:1px solid gold;margin:8px 0;letter-spacing:1px}
+button{width:100%;padding:14px;background:gold;color:#000;font-weight:900;border:none;letter-spacing:3px;margin:8px 0}
+.codebox{background:gold;color:#000;padding:12px;text-align:center;font-weight:900;font-size:22px;letter-spacing:3px;margin:10px 0}
 .lang{position:fixed;top:10px;right:10px;z-index:999}
-.lang select{background:#000;color:gold;border:2px solid gold;padding:6px;border-radius:8px}
+.lang select{background:#000;color:gold;border:1px solid gold;padding:8px}
 </style>
 </head>
 <body>
+<div class="overlay">
 <div class="lang"><select onchange="setLang(this.value)"><option value="en">ENGLISH</option><option value="lg">LUGANDA</option><option value="sw">SWAHILI</option><option value="fr">FRANÇAIS</option></select></div>
 <div class="container">
 <div class="header">
-<div class="logo">MK</div>
-<div style="font-size:30px;font-weight:900;margin:10px 0" id="t1">👑 MK EMPIRE 👑</div>
-<div class="mtn">MTN MoMo: 0784244722<br>WorldRemit: 0784244722</div>
+<div class="title" id="t1">MK EMPIRE</div>
+<div class="subtitle" id="s1">ROYAL COLLECTION • CLASSIC EDITION</div>
+<div class="mtn">MTN MoMo: 0784244722<br>WORLDWIDE: WorldRemit → 0784244722</div>
 </div>
 <div class="card">
-<h3 id="t2" style="text-align:center">BOSS LOGIN</h3>
-<input type="password" id="pass" placeholder="Password">
-<button onclick="document.getElementById('panel').style.display='block';load()" id="t3">LOGIN</button>
+<h3 id="t2" style="text-align:center;letter-spacing:4px">BOSS ACCESS</h3>
+<input type="password" id="pass" placeholder="PASSWORD">
+<button onclick="document.getElementById('panel').style.display='block';load()" id="t3">ENTER</button>
 <div id="panel" style="display:none">
 <h3 id="t4">APPROVE DEALER</h3>
 <input id="dNum" placeholder="07XXXXXXXX">
 <input id="dName" placeholder="Dealer Name">
 <button onclick="approve()" id="t5">GENERATE CODE</button>
 <div id="gen"></div>
-<h3 id="t6">APPROVED: <span id="count">0</span></h3>
+<h3 id="t6">APPROVED DEALERS: <span id="count">0</span></h3>
 <div id="list">No dealers yet</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <script>
 const L={
-en:{t1:'👑 MK EMPIRE 👑',t2:'BOSS LOGIN',t3:'LOGIN',t4:'APPROVE DEALER',t5:'GENERATE CODE',t6:'APPROVED'},
-lg:{t1:'👑 MK EMPIRE 👑',t2:'YINGIRA BOSS',t3:'YINGIRA',t4:'KIRIZA DEALER',t5:'KOLA CODE',t6:'BAKIRIZIDDWA'},
-sw:{t1:'👑 MK EMPIRE 👑',t2:'INGIA BOSS',t3:'INGIA',t4:'IDHINISHA DEALER',t5:'TENGENEZA CODE',t6:'WALIOIDHINISHWA'},
-fr:{t1:'👑 MK EMPIRE 👑',t2:'CONNEXION BOSS',t3:'CONNEXION',t4:'APPROUVER DEALER',t5:'GENERER CODE',t6:'APPROUVES'}
+en:{t1:'MK EMPIRE',s1:'ROYAL COLLECTION • CLASSIC EDITION',t2:'BOSS ACCESS',t3:'ENTER',t4:'APPROVE DEALER',t5:'GENERATE CODE',t6:'APPROVED DEALERS: '},
+lg:{t1:'MK EMPIRE',s1:'ROYAL COLLECTION',t2:'BOSS YINGIRA',t3:'YINGIRA',t4:'KIRIZA DEALER',t5:'KOLA CODE',t6:'BAKIRIZIDDWA: '},
+sw:{t1:'MK EMPIRE',s1:'ROYAL COLLECTION',t2:'INGIA BOSS',t3:'INGIA',t4:'IDHINISHA DEALER',t5:'TENGENEZA CODE',t6:'WALIOIDHINISHWA: '},
+fr:{t1:'MK EMPIRE',s1:'COLLECTION ROYALE',t2:'ACCES BOSS',t3:'ENTRER',t4:'APPROUVER DEALER',t5:'GENERER CODE',t6:'DEALERS APPROUVES: '}
 };
 function setLang(l){for(let k in L[l]){let e=document.getElementById(k);if(e)e.innerText=L[l][k]}}
 function approve(){
@@ -58,13 +62,13 @@ var code='MK-'+n.slice(-4)+Math.floor(Math.random()*90+10);
 var db=JSON.parse(localStorage.getItem('mkDealersV2')||'{}');
 db[n]={name:name,code:code,date:new Date().toLocaleString()};
 localStorage.setItem('mkDealersV2',JSON.stringify(db));
-document.getElementById('gen').innerHTML='<div class=dealer><b>'+n+' - '+name+'</b><div class=codebox>'+code+'</div></div>';
+document.getElementById('gen').innerHTML='<div style=border:1px solid gold;padding:10px;margin:8px 0><b>'+n+' - '+name+'</b><div class=codebox>'+code+'</div></div>';
 load();
 }
 function load(){
 var db=JSON.parse(localStorage.getItem('mkDealersV2')||'{}');
 var h='';var c=0;
-for(var k in db){c++;h+='<div class=dealer><b>'+k+'</b> - '+db[k].name+'<br><div class=codebox>'+db[k].code+'</div></div>'}
+for(var k in db){c++;h+='<div style=border:1px solid gold;padding:10px;margin:6px 0><b>'+k+'</b> - '+db[k].name+'<div class=codebox>'+db[k].code+'</div></div>'}
 document.getElementById('list').innerHTML=h||'No dealers yet';
 document.getElementById('count').innerText=c;
 }
