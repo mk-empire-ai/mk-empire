@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK EMPIRE - MTN 0784244722</title>
+</head>
+<body style="background:#111;color:#fff;font-family:Arial;padding:20px;text-align:center">
+<h1 style="color:gold">👑 MK EMPIRE</h1>
+<p>MTN ONLY: 0784244722 | Pay: *165*1*1#</p>
+<p>30k = 30 Days | 80k = 30 Days Premium</p>
+<input id="num" placeholder="Dealer Number 07..." style="padding:12px;width:90%;margin:5px"><br>
+<input id="amt" placeholder="30000 or 80000" type="number" style="padding:12px;width:90%;margin:5px"><br>
+<button onclick="saveDealer()" style="background:gold;color:black;padding:14px;width:92%;font-weight:bold;margin-top:10px">APPROVE DEALER</button>
+<h3 style="margin-top:20px">Active Dealers:</h3>
+<div id="list" style="background:#222;padding:10px;text-align:left"></div>
+<script>
+let dealers=JSON.parse(localStorage.getItem('mk')||'[]');
+function saveDealer(){
+let n=document.getElementById('num').value;
+let a=document.getElementById('amt').value;
+if(!n||!a){alert('Enter number and amount');return;}
+let exp=new Date(); exp.setDate(exp.getDate()+30);
+dealers.push({n,a,exp:exp.toDateString()});
+localStorage.setItem('mk',JSON.stringify(dealers));
+show(); alert('Dealer '+n+' Approved '+a+' UGX');
+}
+function show(){document.getElementById('list').innerHTML=dealers.map(d=>'<p>📱 '+d.n+' - '+d.a+' UGX - Exp: '+d.exp+'</p>').join('')||'No dealers yet';}
+show();
+</script>
+</body>
+</html>
