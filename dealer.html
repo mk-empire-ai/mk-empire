@@ -1,87 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK EMPIRE - DEALER CHECK</title>
-<style>
-body{background:#000 url('logo.png') no-repeat center fixed;background-size:320px;margin:0;font-family:Arial;color:#ffd700}
-.overlay{background:rgba(0,0,0,0.90);min-height:100vh;padding:15px}
-.header{text-align:center;border:3px solid #ffd700;border-radius:20px;padding:15px;background:linear-gradient(145deg,#111,#000);box-shadow:0 0 30px #ffd700}
-.logo{width:130px;height:130px;border-radius:50%;border:3px solid #ffd700;box-shadow:0 0 25px #ffd700}
-h1{margin:10px 0;color:#ffd700;text-shadow:0 0 15px #ffd700;letter-spacing:4px;font-size:28px}
-.mtn-box{background:linear-gradient(90deg,#ffcc00,#ffd700);color:#000;padding:15px;border-radius:15px;font-weight:bold;margin:12px 0;font-size:19px;border:3px solid #fff;box-shadow:0 0 20px #ffcc00;text-align:center}
-.card{background:linear-gradient(145deg,#1a1a1a,#111);border:2px solid #ffd700;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 0 20px rgba(255,215,0,0.4)}
-input{width:90%;padding:14px;border-radius:12px;border:2px solid #ffd700;background:#000;color:#ffd700;margin:10px 0;font-size:18px;text-align:center;letter-spacing:2px}
-button{background:linear-gradient(90deg,#ffd700,#ffcc00);color:#000;border:none;padding:15px 25px;border-radius:12px;font-weight:bold;width:100%;margin:8px 0;cursor:pointer;font-size:18px;box-shadow:0 0 15px #ffd700}
-.success{background:linear-gradient(90deg,#00ff00,#00cc00);color:#000;padding:20px;border-radius:15px;font-weight:bold;text-align:center;font-size:20px;box-shadow:0 0 20px #00ff00}
-.fail{background:linear-gradient(90deg,#ff0000,#cc0000);color:#fff;padding:20px;border-radius:15px;font-weight:bold;text-align:center;font-size:18px}
-.whatsapp{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff}
-</style>
-</head>
-<body>
-<div class="overlay">
-<div class="header">
-<img src="logo.png" class="logo" onerror="this.src='https://via.placeholder.com/130/000000/FFD700?text=MK'">
-<h1>👑 MK EMPIRE 👑</h1>
-<p>ROYAL EMPIRE • VERIFY YOUR ACCESS</p>
-<div class="mtn-box">💰 NOT APPROVED? PAY FIRST<br>MTN MoMo: <big>0784244722</big><br><small>Mukisa - Send Proof on WhatsApp</small></div>
-</div>
-
-<div class="card" style="text-align:center">
-<h2>🔍 CHECK YOUR NUMBER</h2>
-<input type="tel" id="checkNum" placeholder="07XXXXXXXX" maxlength="10">
-<button onclick="checkDealer()">✅ VERIFY ACCESS</button>
-<div id="result" style="margin-top:15px"></div>
-</div>
-
-<div class="card" id="notApprovedCard" style="display:none">
-<h3>❌ NOT YET APPROVED</h3>
-<p>Your number is not active. Pay to activate!</p>
-<input type="text" id="reqName" placeholder="Your Name">
-<button onclick="requestApproval()">📩 REQUEST ACTIVATION</button>
-<p style="font-size:14px;color:#ccc">After payment, Boss will approve you in 5 mins. Come back and check again!</p>
-<a href="https://wa.me/256784244722?text=Hi Boss MK, I paid for MK EMPIRE Dealer access. My number is " id="waLink" target="_blank"><button class="whatsapp">💬 SEND PROOF ON WHATSAPP</button></a>
-</div>
-
-<div class="card">
-<h3>💎 HOW IT WORKS</h3>
-<p>✅ 1. Pay MTN 0784244722<br>✅ 2. Send screenshot on WhatsApp<br>✅ 3. Boss approves you<br>✅ 4. Enter your 07 number here → Get Access<br>✅ 5. Start earning!</p>
-</div>
-
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>MK EMPIRE - DEALER</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#FFD700;font-family:Arial;min-height:100vh}.container{max-width:480px;margin:0 auto;padding:12px}.header{background:linear-gradient(145deg,#0a0a0a,#1e1e1e);border:2px solid #FFD700;border-radius:22px;padding:20px;text-align:center;box-shadow:0 0 40px rgba(255,215,0,0.4)}.logo{width:140px;height:140px;border-radius:50%;border:3px solid #FFD700;box-shadow:0 0 30px #FFD700;object-fit:cover}.title{font-size:28px;font-weight:900;margin:10px 0 4px;letter-spacing:3px;text-shadow:0 0 10px #FFD700}.mtn{background:linear-gradient(90deg,#FFD700,#ffcc00);color:#000;padding:14px;border-radius:14px;font-weight:900;margin:12px 0;border:2px solid #fff;box-shadow:0 0 25px #FFD700;text-align:center}.card{background:linear-gradient(145deg,#151515,#222);border:1.5px solid #FFD700;border-radius:16px;padding:16px;margin:10px 0}input{width:100%;padding:14px;border-radius:12px;border:2px solid #333;background:#000;color:#FFD700;font-size:18px;margin:8px 0;text-align:center}button{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(90deg,#FFD700,#ffaa00);color:#000;font-weight:900;font-size:16px;margin:6px 0}.ok{background:#00ff0033;border:2px solid #0f0;color:#0f0;padding:20px;border-radius:14px;text-align:center;font-weight:900}.bad{background:#ff000033;border:2px solid #f00;color:#ff6666;padding:15px;border-radius:14px;text-align:center}.wa{background:linear-gradient(90deg,#25D366,#128C7E);color:#fff}
+</style></head><body>
+<div class="container"><div class="header">
+<img src="https://i.ibb.co/5g0r6L2P/mk-logo.jpg" class="logo">
+<div class="title">👑 MK EMPIRE 👑</div><div style="color:#888;font-size:11px;letter-spacing:2px">ROYAL EMPIRE • DEALER ACCESS</div>
+<div class="mtn">PAY MTN MoMo: 0784244722<br><small>Mukisa - Manual Approval</small></div></div>
+<div class="card"><h3 style="text-align:center">🔍 CHECK ACCESS</h3>
+<input id="num" placeholder="07XXXXXXXX" maxlength="10">
+<input id="code" placeholder="Enter Secret Code (from Boss)">
+<button onclick="check()">✅ VERIFY MY ACCESS</button><div id="res" style="margin-top:12px"></div></div>
+<div class="card"><h3>📩 NOT APPROVED?</h3><p style="color:#ccc;font-size:13px;line-height:1.6">1. Pay MTN <b style="color:#FFD700">0784244722</b><br>2. Send proof to Boss<br>3. Boss sends SECRET CODE<br>4. Enter number + code → APPROVED!<br><br><b>Manual System - Boss Mukisa Approves!</b></p>
+<button onclick="window.open('https://wa.me/256784244722?text=Hi Boss Mukisa, I paid MK EMPIRE - My number: '+document.getElementById('num').value,'_blank')" class="wa">💬 SEND PROOF TO MUKISA</button></div></div>
 <script>
-function checkDealer(){
- let num=document.getElementById('checkNum').value.trim();
- if(num.length<10){document.getElementById('result').innerHTML='<div class="fail">❌ Enter full 07 number!</div>';return;}
- let dealers=JSON.parse(localStorage.getItem('mkDealers')||"{}");
- let resultDiv=document.getElementById('result');
- let notApprovedCard=document.getElementById('notApprovedCard');
- if(dealers[num] && dealers[num].approved){
-  resultDiv.innerHTML=`<div class="success">🎉 WELCOME ${dealers[num].name.toUpperCase()}! ✅<br><br>NUMBER: ${num}<br>STATUS: APPROVED & ACTIVE<br><br>👑 YOU ARE NOW MK EMPIRE DEALER! 👑<br><br><small>Approved: ${dealers[num].date}</small></div>`;
-  notApprovedCard.style.display='none';
-  // Redirect to real dealer dashboard after 2 sec - you can change link
-  setTimeout(()=>{alert("Redirecting to Dealer Dashboard...");},1500);
- }else{
-  resultDiv.innerHTML=`<div class="fail">❌ ${num} NOT APPROVED YET!<br>Pay & Request Below</div>`;
-  notApprovedCard.style.display='block';
-  document.getElementById('waLink').href=`https://wa.me/256784244722?text=Hi Boss MK, I paid for MK EMPIRE Dealer access. My number is ${num} - Name: ${document.getElementById('reqName').value}`;
- }
-}
-function requestApproval(){
- let num=document.getElementById('checkNum').value.trim();
- let name=document.getElementById('reqName').value.trim()||"Dealer";
- if(num.length<10){alert("Enter your 07 number first!");return;}
- let pending=JSON.parse(localStorage.getItem('mkPending')||"[]");
- // avoid duplicate
- if(!pending.find(p=>p.num===num)){
-  pending.push({num:num,name:name,time:new Date().toLocaleString()});
-  localStorage.setItem('mkPending',JSON.stringify(pending));
- }
- alert("✅ Request sent! Boss will approve soon. WhatsApp proof now!");
- document.getElementById('waLink').href=`https://wa.me/256784244722?text=Hi Boss MK, I paid for MK EMPIRE. My number ${num} Name ${name} - Please approve me`;
- window.open(document.getElementById('waLink').href,'_blank');
-}
-</script>
-</div>
-</body>
-</html>
+function check(){let n=document.getElementById('num').value.trim();let c=document.getElementById('code').value.trim().toUpperCase();if(n.length<10){document.getElementById('res').innerHTML='<div class=bad>Enter 07 number</div>';return;}let db=JSON.parse(localStorage.getItem('mkDealersV2')||'{}');if(db[n]){document.getElementById('res').innerHTML='<div class=ok>🎉 WELCOME '+db[n].name+'! ✅<br>NUMBER: '+n+'<br>CODE: '+db[n].code+'<br><br>👑 YOU ARE MK EMPIRE DEALER!</div>';return;}if(!c){document.getElementById('res').innerHTML='<div class=bad>❌ Enter Secret Code from Boss!</div>';return;}if(c.length>=4 && c.startsWith('MK')){db[n]={name:'Dealer',code:c,date:new Date().toLocaleString()};localStorage.setItem('mkDealersV2',JSON.stringify(db));document.getElementById('res').innerHTML='<div class=ok>🎉 APPROVED! ✅<br>NUMBER: '+n+'<br>CODE: '+c+'<br><br>👑 WELCOME!</div>';} else {document.getElementById('res').innerHTML='<div class=bad>❌ Wrong Code! Ask Boss for MK- code</div>';}}
+</script></body></html>
