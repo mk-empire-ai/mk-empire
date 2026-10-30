@@ -1,92 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MK EMPIRE - DEALER</title>
 <style>
-body{background:#000;color:#FFD700;font-family:Arial;margin:0;padding:12px}
-.container{max-width:480px;margin:0 auto}
-.header{background:#111;border:2px solid gold;border-radius:20px;padding:20px;text-align:center;box-shadow:0 0 30px gold}
-.logo{width:130px;height:130px;border-radius:50%;border:3px solid gold}
-.title{font-size:28px;font-weight:900;margin:10px 0;text-shadow:0 0 10px gold}
-.mtn{background:gold;color:#000;padding:12px;border-radius:12px;font-weight:900;margin:12px 0;text-align:center}
-.card{background:#1a1a1a;border:1.5px solid gold;border-radius:15px;padding:15px;margin:12px 0}
-input{width:100%;padding:13px;border-radius:10px;border:2px solid #333;background:#000;color:gold;margin:8px 0;text-align:center}
-button{width:100%;padding:13px;border-radius:10px;border:none;background:gold;color:#000;font-weight:900;margin:6px 0}
+body{margin:0;padding:0;background: radial-gradient(ellipse at top, #2a2300 0%, #000 65%);color:#FFD700;font-family:Arial;min-height:100vh}
+.container{max-width:480px;margin:0 auto;padding:15px}
+.header{background: linear-gradient(145deg, #0f0f0f, #1f1f1f);border:2px solid #FFD700;border-radius:22px;padding:22px;text-align:center;box-shadow:0 0 45px rgba(255,215,0,0.5)}
+.logo{width:145px;height:145px;border-radius:50%;border:3px solid #FFD700;box-shadow:0 0 30px #FFD700;object-fit:cover;background:#000}
+.title{font-size:30px;font-weight:900;margin:12px 0 5px;letter-spacing:3px;text-shadow:0 0 15px #FFD700}
+.mtn{background: linear-gradient(90deg, #FFD700, #ffcc00);color:#000;padding:14px;border-radius:14px;font-weight:900;margin:14px 0;border:2px solid #fff;box-shadow:0 0 25px #FFD700;text-align:center}
+.card{background: linear-gradient(145deg, #151515, #222);border:1.5px solid #FFD700;border-radius:16px;padding:18px;margin:12px 0}
+input{width:100%;padding:14px;border-radius:12px;border:2px solid #444;background:#000;color:#FFD700;font-size:18px;margin:8px 0;text-align:center;box-sizing:border-box}
+button{width:100%;padding:14px;border-radius:12px;border:none;background: linear-gradient(90deg, #FFD700, #ffaa00);color:#000;font-weight:900;font-size:17px;margin:6px 0;cursor:pointer}
 .ok{background:#00ff0033;border:2px solid #0f0;color:#0f0;padding:20px;border-radius:12px;text-align:center;font-weight:900}
 .bad{background:#ff000033;border:2px solid #f00;color:#f66;padding:15px;border-radius:12px;text-align:center}
-.wa{background:#25D366;color:#fff}
+.wa{background: linear-gradient(90deg, #25D366, #128C7E);color:#fff}
 .paybox{background:#000;border:1px solid #444;border-radius:10px;padding:10px;margin:8px 0;font-size:13px;color:#ccc}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="header">
-<img src="logo.jpg" class="logo">
-<div class="title">👑 MK EMPIRE 👑</div>
-<div style="color:#888;font-size:11px">ROYAL EMPIRE - DEALER ACCESS</div>
-<div class="mtn">
-💰 MTN MoMo: 0784244722 - Mukisa<br>
-🌍 WorldRemit → MTN 0784244722<br>
-<small>Instant Worldwide</small>
-</div>
-</div>
-
-<div class="card">
-<h3 style="text-align:center">💳 PAYMENT OPTIONS</h3>
-<div class="paybox">
-🇺🇬 <b style="color:gold">UGANDA:</b> MTN MoMo 0784244722 (Mukisa)<br>
-🌍 <b style="color:gold">WORLDWIDE:</b> WorldRemit App → Mobile Money → MTN Uganda → 0784244722<br>
-<small>From USA, UK, Canada, Europe - Instant!</small>
-</div>
-</div>
-
-<div class="card">
-<h3 style="text-align:center">🔍 CHECK ACCESS</h3>
-<input id="num" placeholder="07XXXXXXXX">
-<input id="code" placeholder="Secret Code from Boss (MK-XXXX)">
-<button onclick="check()">✅ VERIFY MY ACCESS</button>
-<div id="res" style="margin-top:12px"></div>
-</div>
-
-<div class="card">
-<h3>📩 NOT APPROVED? DO THIS</h3>
-<p style="color:#ccc;font-size:13px;line-height:1.6">
-1. Pay via MTN or WorldRemit to <b style="color:gold">0784244722</b><br>
-2. Send proof screenshot to Boss on WhatsApp<br>
-3. Boss will send you SECRET CODE (MK-XXXX)<br>
-4. Enter number + code here → APPROVED!<br><br>
-<b>Manual System - Boss Mukisa Approves!</b>
-</p>
-<button onclick="goWA()" class="wa">💬 SEND PROOF TO MUKISA</button>
-</div>
-</div>
-
-<script>
-function check(){
-  var n=document.getElementById('num').value.trim();
-  var c=document.getElementById('code').value.trim().toUpperCase();
-  if(n.length<10){document.getElementById('res').innerHTML='<div class=bad>Enter 07 number</div>';return;}
-  var db=JSON.parse(localStorage.getItem('mkDealersV2')||'{}');
-  if(db[n]){
-    document.getElementById('res').innerHTML='<div class=ok>🎉 WELCOME '+db[n].name+'! ✅<br>NUMBER: '+n+'<br>CODE: '+db[n].code+'<br><br>👑 YOU ARE MK EMPIRE DEALER!</div>';
-    return;
-  }
-  if(!c){document.getElementById('res').innerHTML='<div class=bad>❌ Enter Secret Code from Boss!<br>Pay & Get Code on WhatsApp</div>';return;}
-  if(c.length>=4 && c.indexOf('MK')===0){
-    db[n]={name:'Dealer',code:c,date:new Date().toLocaleString()};
-    localStorage.setItem('mkDealersV2',JSON.stringify(db));
-    document.getElementById('res').innerHTML='<div class=ok>🎉 APPROVED! ✅<br>NUMBER: '+n+'<br>CODE: '+c+'<br><br>👑 WELCOME TO MK EMPIRE!</div>';
-  }else{
-    document.getElementById('res').innerHTML='<div class=bad>❌ Wrong Code! Ask Boss for correct MK- code</div>';
-  }
-}
-function goWA(){
-  var n=document.getElementById('num').value.trim();
-  var url='https://wa.me/256784244722?text=Hi Boss Mukisa, I paid MK EMPIRE - My number: '+n;
-  window.open(url,'_blank');
-}
-</script>
-</body>
-</html>
+<!-- LOGO IS INSIDE CODE - NO UPLOAD NEEDED -->
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCA8A8ADAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN2d3h8fHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4/8AAEQgAPwD8AwERAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAAIBAwMCBAMFBQQEAAABfQECAAMEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYXGBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN2d3h8fHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4/8QAGQEBAAMBAQAAAAAAAAAAAAAAAAECAwQF/8QAHBEBAAMBAQEBAQAAAAAAAAAAAAECETFBIRIxQf/aAAwDAQACEQMRAD8A8qooooooooooooooooooooooorGoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
