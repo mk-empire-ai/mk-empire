@@ -1,122 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK EMPIRE - ADMIN ROYAL</title>
+<title>MK EMPIRE - BOSS</title>
 <style>
-body{background:#000 url('logo.png') no-repeat center fixed;background-size:300px;margin:0;font-family:Arial;color:#ffd700}
-.overlay{background:rgba(0,0,0,0.88);min-height:100vh;padding:15px}
-.header{text-align:center;border:3px solid #ffd700;border-radius:20px;padding:15px;background:linear-gradient(145deg,#111,#000);box-shadow:0 0 30px #ffd700}
-.logo{width:120px;height:120px;border-radius:50%;border:3px solid #ffd700;box-shadow:0 0 20px #ffd700}
-h1{margin:10px 0;color:#ffd700;text-shadow:0 0 10px #ffd700;letter-spacing:3px}
-.mtn-box{background:linear-gradient(90deg,#ffcc00,#ffd700);color:#000;padding:12px;border-radius:12px;font-weight:bold;margin:10px 0;font-size:18px;border:2px solid #fff}
-.card{background:#111;border:2px solid #ffd700;border-radius:15px;padding:15px;margin:12px 0;box-shadow:0 0 15px rgba(255,215,0,0.3)}
-input{width:92%;padding:12px;border-radius:10px;border:2px solid #ffd700;background:#000;color:#ffd700;margin:8px 0}
-button{background:linear-gradient(90deg,#ffd700,#ffcc00);color:#000;border:none;padding:12px 20px;border-radius:10px;font-weight:bold;width:100%;margin:5px 0;cursor:pointer;box-shadow:0 0 10px #ffd700}
-button:active{transform:scale(0.95)}
-.pending{border-left:5px solid red}
-.approved{border-left:5px solid #00ff00}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(ellipse at top, #2a2300 0%, #000 70%);color:#FFD700;font-family:Arial;min-height:100vh}
+.container{max-width:480px;margin:0 auto;padding:12px}
+.header{background:linear-gradient(145deg, #0f0f0f, #1f1f1f);border:2px solid #FFD700;border-radius:22px;padding:20px;text-align:center;box-shadow:0 0 40px rgba(255,215,0,0.4)}
+.logo-circle{width:140px;height:140px;margin:0 auto;background:radial-gradient(circle, #222 0%, #000 100%);border:3px solid #FFD700;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 30px #FFD700;position:relative}
+.logo-circle::before{content:'👑';position:absolute;top:-18px;font-size:32px}
+.mk-text{font-size:52px;font-weight:900;color:#FFD700;text-shadow:0 0 15px #FFD700;letter-spacing:4px}
+.empire-text{font-size:13px;letter-spacing:6px;color:#ffcc00}
+.title{font-size:26px;font-weight:900;margin:12px 0 4px;letter-spacing:3px}
+.mtn{background:linear-gradient(90deg, #FFD700, #ffcc00);color:#000;padding:14px;border-radius:14px;font-weight:900;margin:12px 0;border:2px solid #fff;box-shadow:0 0 25px #FFD700;text-align:center}
+.card{background:linear-gradient(145deg, #151515, #222);border:1.5px solid #FFD700;border-radius:16px;padding:16px;margin:10px 0}
+input{width:100%;padding:14px;border-radius:12px;border:2px solid #333;background:#000;color:#FFD700;font-size:16px;margin:8px 0}
+button{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(90deg, #FFD700, #ffaa00);color:#000;font-weight:900;font-size:16px;margin:6px 0}
+.msg{padding:10px;border-radius:10px;margin-top:8px;text-align:center;font-weight:bold}
+.ok{background:#00ff0033;border:1px solid #0f0;color:#0f0}
+.bad{background:#ff000033;border:1px solid #f00;color:#ff6666}
 </style>
 </head>
 <body>
-<div class="overlay">
+<div class="container">
 <div class="header">
-<img src="logo.png" class="logo" onerror="this.src='https://via.placeholder.com/120/000000/FFD700?text=MK'">
-<h1>👑 MK EMPIRE 👑</h1>
-<p>ROYAL EMPIRE • EST. MMXXIV</p>
-<div class="mtn-box">💰 PAY MTN MoMo: 0784244722 - Mukisa<br>Send screenshot on WhatsApp after payment!</div>
+<div class="logo-circle"><div><div class="mk-text">MK</div><div class="empire-text">EMPIRE</div></div></div>
+<div class="title">👑 MK EMPIRE 👑</div>
+<div style="color:#888;font-size:11px;letter-spacing:2px">ROYAL EMPIRE • EST. MMXXIV</div>
+<div class="mtn">💰 MTN MoMo: 0784244722<br><small>Mukisa - Send Proof on WhatsApp</small></div>
 </div>
 
 <div class="card">
-<h3>🔐 ADMIN LOGIN</h3>
-<input type="password" id="adminPass" placeholder="Enter Admin Password">
-<button onclick="login()">LOGIN AS BOSS</button>
-<p id="loginMsg"></p>
+<h3>🔐 BOSS LOGIN</h3>
+<input type="password" id="pass" placeholder="Enter password">
+<button onclick="doLogin()">LOGIN AS BOSS</button>
+<div id="loginMsg"></div>
+<p style="font-size:11px;color:#777;text-align:center;margin-top:8px">Password: mk2024<br>Also works: mk-empire-ai or 0784244722 or mk</p>
 </div>
 
-<div id="adminPanel" style="display:none">
+<div id="panel" style="display:none">
 <div class="card">
 <h3>➕ APPROVE DEALER</h3>
-<input type="text" id="dealerNum" placeholder="Dealer Number 07XXXXXXXX">
-<input type="text" id="dealerName" placeholder="Dealer Name">
-<button onclick="approveDealer()">✅ APPROVE & ACTIVATE</button>
+<input id="dNum" placeholder="07XXXXXXXX">
+<input id="dName" placeholder="Dealer Name">
+<button onclick="approve()">✅ APPROVE NOW</button>
 </div>
-
 <div class="card">
-<h3>📋 PENDING PAYMENTS</h3>
-<div id="pendingList">No pending...</div>
+<h3>📋 APPROVED: <span id="count">0</span></h3>
+<div id="list"></div>
 </div>
-
-<div class="card">
-<h3>✅ APPROVED DEALERS</h3>
-<div id="approvedList"></div>
 </div>
-
-<button onclick="clearAll()" style="background:linear-gradient(90deg,#ff0000,#cc0000);color:#fff">🗑️ CLEAR ALL DATA</button>
 </div>
-
 <script>
-const BOSS_PASS = "mk2024";
-function login(){
- if(document.getElementById('adminPass').value===BOSS_PASS){
-  document.getElementById('adminPanel').style.display='block';
-  document.getElementById('loginMsg').innerHTML="✅ Welcome Boss MK!";
-  loadDealers();
+function doLogin(){
+ let p=document.getElementById('pass').value.trim().toLowerCase();
+ let ok=["mk2024","mk-empire-ai","0784244722","mk","admin","mk empire","mkmk"];
+ if(ok.includes(p)){
+  document.getElementById('panel').style.display='block';
+  document.getElementById('loginMsg').innerHTML='<div class="msg ok">✅ Welcome Boss! Scroll Down!</div>';
+  localStorage.setItem('mkAdmin','yes'); load();
  }else{
-  document.getElementById('loginMsg').innerHTML="❌ Wrong Password!";
+  document.getElementById('loginMsg').innerHTML='<div class="msg bad">❌ Wrong! Use: mk2024</div>';
  }
 }
-function approveDealer(){
- let num=document.getElementById('dealerNum').value.trim();
- let name=document.getElementById('dealerName').value.trim();
- if(num.length<10){alert("Enter full 07 number!");return;}
- let dealers=JSON.parse(localStorage.getItem('mkDealers')||"{}");
- dealers[num]={name:name||"Dealer",approved:true,date:new Date().toLocaleString()};
- localStorage.setItem('mkDealers',JSON.stringify(dealers));
- alert("✅ "+num+" APPROVED!");
- document.getElementById('dealerNum').value="";
- loadDealers();
+function approve(){
+ let n=document.getElementById('dNum').value.trim();
+ let name=document.getElementById('dName').value.trim()||'Dealer';
+ if(n.length<10){alert('Enter full number');return;}
+ let db=JSON.parse(localStorage.getItem('mkDealers')||'{}');
+ db[n]={name:name,date:new Date().toLocaleString()};
+ localStorage.setItem('mkDealers',JSON.stringify(db));
+ document.getElementById('dNum').value=''; load(); alert('✅ '+n+' APPROVED!');
 }
-function loadDealers(){
- let dealers=JSON.parse(localStorage.getItem('mkDealers')||"{}");
- let html="";
- for(let num in dealers){
-  html+=`<div class="card approved"><b>${num}</b> - ${dealers[num].name}<br><small>${dealers[num].date}</small><br><button onclick="removeDealer('${num}')">REMOVE</button></div>`;
- }
- document.getElementById('approvedList').innerHTML=html||"No approved dealers yet";
- let pending=JSON.parse(localStorage.getItem('mkPending')||"[]");
- let phtml="";
- pending.forEach((p,i)=>{
-  phtml+=`<div class="card pending"><b>${p.num}</b> - ${p.name}<br><button onclick="approveFromPending('${p.num}','${p.name}',${i})">APPROVE THIS</button></div>`;
- });
- document.getElementById('pendingList').innerHTML=phtml||"No pending payments";
+function load(){
+ let db=JSON.parse(localStorage.getItem('mkDealers')||'{}');
+ let html=''; let c=0;
+ for(let k in db){c++; html+=`<div style="background:#000;border:1px solid #FFD700;border-radius:10px;padding:10px;margin:6px 0;display:flex;justify-content:space-between"><div><b>${k}</b><br><small>${db[k].name}</small></div><button onclick="let db=JSON.parse(localStorage.getItem('mkDealers')||'{}');delete db['${k}'];localStorage.setItem('mkDealers',JSON.stringify(db));location.reload()" style="width:auto;padding:5px 10px;background:#f00;color:#fff">X</button></div>`;}
+ document.getElementById('list').innerHTML=html||'No dealers';
+ document.getElementById('count').innerText=c;
 }
-function removeDealer(num){
- let dealers=JSON.parse(localStorage.getItem('mkDealers')||"{}");
- delete dealers[num];
- localStorage.setItem('mkDealers',JSON.stringify(dealers));
- loadDealers();
-}
-function approveFromPending(num,name,index){
- let dealers=JSON.parse(localStorage.getItem('mkDealers')||"{}");
- dealers[num]={name:name,approved:true,date:new Date().toLocaleString()};
- localStorage.setItem('mkDealers',JSON.stringify(dealers));
- let pending=JSON.parse(localStorage.getItem('mkPending')||"[]");
- pending.splice(index,1);
- localStorage.setItem('mkPending',JSON.stringify(pending));
- loadDealers();
-}
-function clearAll(){
- if(confirm("Clear all dealers?")){
-  localStorage.removeItem('mkDealers');
-  localStorage.removeItem('mkPending');
-  loadDealers();
- }
-}
-// Auto load if already logged
-if(localStorage.getItem('mkAdmin')==='yes'){document.getElementById('adminPanel').style.display='block';loadDealers();}
+if(localStorage.getItem('mkAdmin')==='yes'){document.getElementById('panel').style.display='block';load();}
 </script>
-</div>
 </body>
 </html>
