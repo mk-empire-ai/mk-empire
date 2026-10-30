@@ -3,60 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MK DEALER</title>
+<title>MK EMPIRE - DEALER</title>
 <style>
-body{margin:0;padding:10px;background:#000;color:gold;font-family:Arial}
+body{margin:0;padding:0;background:#000 url('bg.jpg') fixed;background-size:cover;color:gold;font-family:'Times New Roman',serif;min-height:100vh}
+.overlay{background:rgba(0,0,0,0.85);min-height:100vh;padding:15px}
 .container{max-width:500px;margin:0 auto}
-.header{background:#111;border:3px solid gold;border-radius:20px;padding:20px;text-align:center;box-shadow:0 0 30px gold}
-.logo{width:140px;height:140px;margin:0 auto;background:linear-gradient(135deg,gold,#ffaa00);color:#000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:65px;font-weight:900;border:4px solid #fff}
-.mtn{background:gold;color:#000;padding:12px;border-radius:12px;font-weight:900;margin:10px 0;text-align:center}
-.card{background:#1a1a1a;border:2px solid gold;border-radius:15px;padding:15px;margin:12px 0}
-input{width:100%;padding:12px;border-radius:10px;border:2px solid #333;background:#000;color:gold;margin:6px 0;text-align:center}
-button{width:100%;padding:12px;border-radius:10px;border:none;background:gold;color:#000;font-weight:900;margin:6px 0}
+.header{background:rgba(0,0,0,0.9);border:3px solid gold;border-radius:0;padding:30px;text-align:center}
+.title{font-size:38px;font-weight:900;letter-spacing:8px;color:gold;border-bottom:2px solid gold;padding-bottom:15px;display:inline-block}
+.subtitle{color:#aaa;font-size:12px;letter-spacing:5px;margin-top:10px}
+.mtn{background:gold;color:#000;padding:15px;font-weight:900;margin:20px 0;letter-spacing:2px}
+.card{background:rgba(10,10,10,0.95);border:1px solid gold;padding:20px;margin:15px 0}
+input{width:100%;padding:14px;background:#000;color:gold;border:1px solid gold;margin:8px 0;text-align:center;letter-spacing:2px}
+button{width:100%;padding:14px;background:gold;color:#000;font-weight:900;border:none;letter-spacing:3px;margin:8px 0}
 .lang{position:fixed;top:10px;right:10px;z-index:999}
-.lang select{background:#000;color:gold;border:2px solid gold;padding:6px;border-radius:8px}
+.lang select{background:#000;color:gold;border:1px solid gold;padding:8px}
 </style>
 </head>
 <body>
+<div class="overlay">
 <div class="lang"><select onchange="setLang(this.value)"><option value="en">EN</option><option value="lg">LG</option><option value="sw">SW</option><option value="fr">FR</option></select></div>
 <div class="container">
 <div class="header">
-<div class="logo">MK</div>
-<div style="font-size:28px;font-weight:900" id="t1">👑 MK EMPIRE 👑</div>
-<div class="mtn" id="t2">MTN MoMo: 0784244722<br>WorldRemit: 0784244722</div>
+<div class="title" id="t1">MK EMPIRE</div>
+<div class="subtitle" id="s1">ROYAL DEALER ACCESS</div>
+<div class="mtn" id="t2">MTN MoMo: 0784244722<br>WorldRemit → 0784244722</div>
 </div>
 <div class="card">
-<h3 id="t3" style="text-align:center">PAYMENT</h3>
-<p id="t4" style="color:#ccc;font-size:13px;text-align:center">UG: MTN 0784244722<br>WORLD: WorldRemit → 0784244722</p>
+<h3 id="t3" style="text-align:center;letter-spacing:4px">PAYMENT</h3>
+<p id="t4" style="text-align:center;color:#ccc">UG: MTN 0784244722<br>WORLD: WorldRemit → 0784244722</p>
 </div>
 <div class="card">
-<h3 id="t5" style="text-align:center">CHECK ACCESS</h3>
+<h3 id="t5" style="text-align:center;letter-spacing:4px">VERIFY ACCESS</h3>
 <input id="num" placeholder="07XXXXXXXX">
 <input id="code" placeholder="MK-XXXX">
 <button onclick="check()" id="t6">VERIFY</button>
 <div id="res" style="margin-top:10px"></div>
 </div>
 <div class="card">
-<button onclick="window.open('https://wa.me/256784244722','_blank')" style="background:#25D366;color:#fff" id="t7">WHATSAPP BOSS</button>
+<button onclick="window.open('https://wa.me/256784244722','_blank')" style="background:#25D366;color:#fff" id="t7">WHATSAPP</button>
+</div>
+</div>
 </div>
 </div>
 <script>
 const L={
-en:{t1:'👑 MK EMPIRE 👑',t2:'MTN MoMo: 0784244722<br>WorldRemit: 0784244722',t3:'PAYMENT',t4:'UG: MTN 0784244722<br>WORLD: WorldRemit → 0784244722',t5:'CHECK ACCESS',t6:'VERIFY',t7:'WHATSAPP BOSS'},
-lg:{t1:'👑 MK EMPIRE 👑',t2:'MTN MoMo: 0784244722',t3:'OKUSASULA',t4:'UG: MTN 0784244722',t5:'KEBERA ACCESS',t6:'KEBERA',t7:'WHATSAPP BOSS'},
-sw:{t1:'👑 MK EMPIRE 👑',t2:'MTN MoMo: 0784244722',t3:'MALIPO',t4:'UG: MTN 0784244722',t5:'ANGALIA ACCESS',t6:'THIBITISHA',t7:'WHATSAPP BOSS'},
-fr:{t1:'👑 MK EMPIRE 👑',t2:'MTN MoMo: 0784244722',t3:'PAIEMENT',t4:'UG: MTN 0784244722',t5:'VERIFIER ACCES',t6:'VERIFIER',t7:'WHATSAPP BOSS'}
+en:{t1:'MK EMPIRE',s1:'ROYAL DEALER ACCESS',t2:'MTN MoMo: 0784244722<br>WorldRemit → 0784244722',t3:'PAYMENT',t4:'UG: MTN 0784244722<br>WORLD: WorldRemit → 0784244722',t5:'VERIFY ACCESS',t6:'VERIFY',t7:'WHATSAPP'},
+lg:{t1:'MK EMPIRE',s1:'DEALER ACCESS',t2:'MTN MoMo: 0784244722',t3:'OKUSASULA',t4:'MTN: 0784244722',t5:'KEBERA ACCESS',t6:'KEBERA',t7:'WHATSAPP'},
+sw:{t1:'MK EMPIRE',s1:'DEALER ACCESS',t2:'MTN MoMo: 0784244722',t3:'MALIPO',t4:'MTN: 0784244722',t5:'THIBITISHA',t6:'THIBITISHA',t7:'WHATSAPP'},
+fr:{t1:'MK EMPIRE',s1:'ACCES DEALER',t2:'MTN MoMo: 0784244722',t3:'PAIEMENT',t4:'MTN: 0784244722',t5:'VERIFIER ACCES',t6:'VERIFIER',t7:'WHATSAPP'}
 };
 function setLang(l){for(let k in L[l]){let e=document.getElementById(k);if(e)e.innerHTML=L[l][k]}}
 function check(){
 var n=document.getElementById('num').value.trim();
 var c=document.getElementById('code').value.trim().toUpperCase();
 var db=JSON.parse(localStorage.getItem('mkDealersV2')||'{}');
-if(db[n]){document.getElementById('res').innerHTML='<div style=background:#00ff0033;border:2px solid #0f0;color:#0f0;padding:12px;text-align:center>✅ WELCOME '+db[n].name+'<br>CODE: '+db[n].code+'</div>';return}
+if(db[n]){document.getElementById('res').innerHTML='<div style=background:rgba(0,255,0,0.1);border:1px solid #0f0;color:#0f0;padding:12px;text-align:center>✅ WELCOME '+db[n].name+'<br>CODE: '+db[n].code+'</div>';return}
 if(c.indexOf('MK')==0){
 db[n]={name:'Dealer',code:c};
 localStorage.setItem('mkDealersV2',JSON.stringify(db));
-document.getElementById('res').innerHTML='<div style=background:#00ff0033;border:2px solid #0f0;color:#0f0;padding:12px;text-align:center>✅ APPROVED! CODE: '+c+'</div>';
+document.getElementById('res').innerHTML='<div style=background:rgba(0,255,0,0.1);border:1px solid #0f0;color:#0f0;padding:12px;text-align:center>✅ APPROVED! CODE: '+c+'</div>';
 }else{document.getElementById('res').innerHTML='<div style=color:red;text-align:center>Wrong Code!</div>'}
 }
 </script>
