@@ -1,1 +1,31 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MK EMPIRE Dealer</title>
+</head>
+<body style="background:#111;color:#fff;font-family:Arial;padding:20px;text-align:center">
+<h1 style="color:gold">👑 MK EMPIRE</h1>
+<p>MTN: 0784244722 | Pay: *165*1*1#</p>
+<p>Dealer Login - Enter Number</p>
+<input id="num" placeholder="07..." style="padding:14px;width:90%">
+<br><br>
+<button onclick="checkDealer()" style="background:gold;color:black;padding:14px;width:92%;font-weight:bold">CHECK ACCESS</button>
+<div id="result" style="margin-top:20px;background:#222;padding:15px"></div>
+<script>
+function checkDealer(){
+let n=document.getElementById('num').value;
+let dealers=JSON.parse(localStorage.getItem('mk')||'[]');
+let d=dealers.find(x=>x.number==n);
+let r=document.getElementById('result');
+if(!d){r.innerHTML='❌ NOT APPROVED - Pay MTN: 0784244722';return;}
+let exp=new Date(d.expiry);
+let now=new Date();
+let days=Math.ceil((exp-now)/(1000*60*60*24));
+if(exp<now){r.innerHTML='🔒 EXPIRED - Renew MTN 0784244722';}
+else{r.innerHTML='✅ APPROVED - '+days+' days left - Number: '+d.number;}
+}
+</script>
+</body>
+</html>
